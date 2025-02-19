@@ -10850,6 +10850,9 @@ body {
   position: absolute;
   transform-style: preserve-3d;
   transition: transform 1s;
+  perspective-origin: center;
+  perspective: 2000px;
+
 }
 
 /* Items du carrousel avec images */
@@ -10867,28 +10870,30 @@ body {
   font-weight: bold;
   border-radius: 10px;
   opacity: 0.95;
+  /* Animation fluide */
+  animation: floating 3s ease-in-out infinite;
 }
+
+/* Définition de l'animation en combinant la transformation de base et le translateY */
+@keyframes floating {
+  0%   { transform: var(--base-transform) translateY(0); }
+  50%  { transform: var(--base-transform) translateY(-10px); }
+  100% { transform: var(--base-transform) translateY(0); }
+}
+
+/* Définir la transformation de base pour chaque item via une variable CSS */
+.a { --base-transform: rotateY(0deg) translateZ(250px) translateY(-20px); background-image: url('../assets/stele.png'); }
+.b { --base-transform: rotateY(60deg) translateZ(250px) translateY(-0px); background-image: url('../assets/stele.png'); }
+.c { --base-transform: rotateY(120deg) translateZ(250px) translateY(-30px); background-image: url('../assets/stele.png'); }
+.d { --base-transform: rotateY(180deg) translateZ(250px) translateY(-10px); background-image: url('../assets/stele.png'); }
+.e { --base-transform: rotateY(240deg) translateZ(250px) translateY(-40px); background-image: url('../assets/stele.png'); }
+.f { --base-transform: rotateY(300deg) translateZ(250px) translateY(-20px); background-image: url('../assets/stele.png'); }
+
 
 /* Effet sur l'élément cliquable */
 .active-clickable {
   cursor: pointer;
-  /* remove following to remove borders*/
-  border: 1px solid white;
-  box-shadow: 0 0 5px white;
-  transition: box-shadow 0.3s ease;
 }
-
-.active-clickable:hover {
-  box-shadow: 0 0 20px yellow;
-}
-
-.a { transform: rotateY(0deg) translateZ(250px); background-image: url('../assets/5.jpg'); }
-.b { transform: rotateY(60deg) translateZ(250px); background-image: url('../assets/5.jpg'); }
-.c { transform: rotateY(120deg) translateZ(250px); background-image: url('../assets/5.jpg'); }
-.d { transform: rotateY(180deg) translateZ(250px); background-image: url('../assets/5.jpg'); }
-.e { transform: rotateY(240deg) translateZ(250px); background-image: url('../assets/5.jpg'); }
-.f { transform: rotateY(300deg) translateZ(250px); background-image: url('../assets/5.jpg'); }
-
 
 /* Buttons */ 
 .next, .prev {
