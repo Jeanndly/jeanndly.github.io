@@ -55,6 +55,12 @@ updateClickableElement();
 // Ajout d'un événement click sur l'élément visible
 $(document).on("click", ".active-clickable", function() {
     alert("Vous avez cliqué sur l'élément : " + $(this).text());
-    // Tu peux remplacer cette alerte par une redirection :
-    // window.location.href = "https://example.com";
 });
+
+function openPopup() {
+    document.querySelector(".popup-overlay").style.display = "flex";
+}
+
+function closePopup() {
+    document.querySelector(".popup-overlay").style.display = "none";
+}
